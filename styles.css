@@ -1,0 +1,366 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family:monospace;
+    text-decoration: none;
+    scroll-behavior: smooth;
+    list-style:none;
+}
+
+header{
+    position:fixed;
+    top: 1rem;
+    left:50%;
+    transform:translateX(-50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5rem;
+    background-color: rgb(250, 195, 250);
+    backdrop-filter: blur(8px);
+    color: rgb(150, 100, 100);
+    padding: 0.5rem 1.5rem;
+    border-radius: 3rem;
+    z-index: 1000;
+
+}
+.logo{
+    font-size: 1.3rem;
+    font-weight: 600;
+    text-wrap: nowrap;
+    color: rgb(150, 100, 100);
+    transition: 0.3s ease-in-out;
+
+}
+.logo:hover{
+    transform: scale(1.1);
+}
+.nav-links{
+    display:flex;
+    gap: 2rem;
+}
+li a{
+    position:relative;
+    color: rgb(150, 100, 100);
+    font-weight: 300;
+}
+li a::before{
+    position: absolute;
+    content: '';
+    width: 0;
+    left:0;
+    height: 5px;
+    top: 25px;
+    border-radius: 1rem;
+    transition: 0.3s ease-in-out;
+    background: linear-gradient(to right, rgb(250, 195, 250), rgb(223, 150, 223));
+}
+li a:hover::before{
+    width: 100%;
+}
+.visit-btn{
+    padding: 0.8rem 1.5rem;
+    border-radius: 3rem;
+    border:none;
+    font-weight: 500;
+    font-size: 1rem;
+    color: rgb(173, 149, 149);
+    cursor: pointer;
+    text-wrap: nowrap;
+    transition: 0.3s ease-in-out;
+    background: linear-gradient(to right, rgb(235, 190, 235), rgb(223, 150, 223));
+    
+}
+.visit-btn:hover{
+    background: linear-gradient(to right, rgb(223, 150, 223),rgb(250, 195, 250));
+    transform: scale(1.03);
+}
+#menu-icon{
+    font-size: 1.5rem;
+    color: rgb(155, 106, 106);
+}
+section{
+    min-height: 100vh;
+    padding: 8rem 12%;
+    width: 100%;
+    position: relative;
+    background-color: rgb(230, 180, 230) ;
+}
+.about{
+    display:flex;
+    align-items: center;
+    justify-content: center;
+}
+.about .about-container{
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10rem;
+}
+.about img{
+    width: 20vw;
+    border-radius: 0%;
+}
+.info-box{
+    display:flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+}
+.info-box h2{
+    font-size: 1.8rem;
+    font-weight: 500;
+    opacity: 0.8;
+    color: rgb(150, 100, 100);
+}
+.info-box h1{
+    font-size: 2.5rem;
+    font-weight: 600;
+    color: rgb(155, 106, 106);
+}
+.info-box span{
+    background: linear-gradient(to right, rgb(117, 68, 117), rgb(182, 125, 182));
+    font-size: 1.5rem;
+    background-clip: text;
+    color: transparent
+}
+.btn-group{
+    display: flex;
+    gap: 1rem;
+    color: rgb(173, 149, 149);
+}
+.btn{
+    border-radius: 3rem;
+    padding: 0.5rem 1.5rem;
+    border: 2px solid rgb(150, 100, 100);
+    cursor: pointer;
+    font-weight: 500;
+    text-wrap: nowrap;
+    transition: 0.3s ease-in-out;
+    background: linear-gradient(to right, rgb(235, 190, 235), rgb(223, 150, 223));
+}
+.btn:hover{
+    background: linear-gradient(to right, rgb(223, 150, 223),rgb(250, 195, 250));
+    transform: scale(1.03);
+}
+.socials{
+    display: flex;
+    gap: 2rem;
+}
+.socials i{
+    font-size: 2.5rem;
+    cursor: pointer;
+    transition: 0.2s ease-in-out;
+}
+.socials i:hover{
+    transform: scale(1.2);
+}
+.section-title{
+    font-size: 4rem;
+    font-weight: 600;
+    text-align: center;
+    margin-bottom: 3rem;
+    color: rgb(155, 106, 106);
+}
+.experience{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 3rem;
+}
+.experience img{
+    width: 24vw;
+    border-radius: 3rem;
+}
+.grid{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+}
+.card{
+    border:2px solid rgb(150, 100, 100);
+    border-radius: 3rem;
+    padding: 3rem;
+    display: flex;
+    flex-direction: column;
+    align-items: baseline;
+    justify-content:center;
+    cursor: pointer;
+    transition: 0.3s ease-in-out;
+    background: linear-gradient(to right, rgb(235, 190, 235), rgb(223, 150, 223));
+}
+.card:hover{
+    transform: scale(1.03);
+    /* background: linear-gradient(to right, rgb(223, 150, 223),rgb(250, 195, 250)); */
+    color:rgb(155, 106, 106)
+}
+.card i{
+    font-size: 1.5rem;
+    color: rgb(155, 106, 106);
+    margin-bottom: 1rem;
+}
+.card span{
+    font-size: 1.5rem;
+    font-weight: 500;
+    background: linear-gradient(to right, rgb(117, 68, 117), rgb(182, 125, 182));
+    background-clip: text;
+    color: transparent;
+}
+.projects-grid{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+.project-card{
+    padding: 3rem 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    gap: 1.5rem;
+    border-radius: 3rem;
+    border: 2px solid rgb(150, 100, 100);
+    cursor: pointer;
+    transition: 0.3s ease-in-out;
+    background: linear-gradient(to right, rgb(235, 190, 235), rgb(223, 150, 223));
+}
+.project-card:hover{
+    transform: translateY(-10px) scale(1.02);
+    color: rgb(155, 106, 106);
+}
+.project-card img{
+    width: 20vw;
+    border-radius: 1rem;
+}
+.project-card:hover .btn{
+    border: 2px solid rgb(155, 106, 106);
+    color: rgb(80, 36, 80)
+}
+.project-card:hover .btn:hover{
+    border: 2px solid rgb(155, 106, 106);
+    color: rgb(80, 36, 80);
+}
+.input-box {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Two equal columns */
+    gap: 2rem;
+    align-items: start;
+    width: 100%;
+    max-width: 800px; /* Adjust width */
+    margin: 5rem auto; /* Center horizontally */
+}
+
+/* Left side: Email & Name */
+.input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    width: 100%;
+}
+
+.input {
+    position: relative;
+    width: 100%;
+}
+
+.input i {
+    position: absolute;
+    top: 50%;
+    left: 15px;
+    transform: translateY(-50%);
+    font-size: 1.2rem;
+    color: rgb(150, 100, 100);
+}
+
+.input input {
+    width: 100%;
+    padding: 1rem 2rem;
+    padding-left: 3rem; /* Space for icon */
+    border-radius: 3rem;
+    border: 2px solid rgb(150, 100, 100);
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: rgb(150, 100, 100);
+    background: linear-gradient(to right, rgb(235, 190, 235), rgb(223, 150, 223));
+}
+
+/* Right side: Message Box */
+.input-message-box {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.input-message-box textarea {
+    width: 100%;
+    height: 100%;
+    padding: 1rem 2rem;
+    padding-left: 3rem; /* Space for icon */
+    border-radius: 1.5rem; /* Softer corners */
+    border: 2px solid rgb(150, 100, 100);
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: rgb(150, 100, 100);
+    background: linear-gradient(to right, rgb(235, 190, 235), rgb(223, 150, 223));
+    resize: none;
+    outline: none;
+}
+
+.input-message-box i {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    font-size: 1.2rem;
+    color: rgb(150, 100, 100);
+}
+
+/* Centering the Send Button */
+.message-btn {
+    grid-column: span 2; /* Makes it take full width below */
+    margin-top: 2rem;
+    padding: 1rem 2rem;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color:rgb(155, 106, 106);
+    background: linear-gradient(to right, rgb(155, 107, 155), rgb(223, 150, 223));
+    border: none;
+    border-radius: 3rem;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.message-btn:hover {
+    background-color: rgb(120, 80, 80);
+}
+
+footer{
+    bottom: 0;
+    left:0;
+    height: 10rem;
+    width: 100%;
+}
+
+
+
+
+
+
+::-webkit-scrollbar{
+    width: 10px;
+}
+::-webkit-scrollbar-track{
+    background: rgb(250, 195, 250);
+}
+::-webkit-scrollbar-thumb{
+    background:linear-gradient(to bottom, rgb(250, 195, 250), rgb(223, 150, 223));
+    border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover{
+    
+    background:linear-gradient(to bottom, rgb(155, 106, 106), rgb(150, 100, 100));
+}
