@@ -8,6 +8,7 @@
     list-style:none;
 }
 
+
 header{
     position:fixed;
     top: 1rem;
@@ -17,16 +18,15 @@ header{
     align-items: center;
     justify-content: center;
     gap: 5rem;
-    background-color: rgb(250, 195, 250);
+    background-color: rgb(200,180, 180);
     backdrop-filter: blur(8px);
     color: rgb(150, 100, 100);
     padding: 0.5rem 1.5rem;
     border-radius: 3rem;
     z-index: 1000;
-
 }
 .logo{
-    font-size: 1.3rem;
+    font-size: 1.5rem;
     font-weight: 600;
     text-wrap: nowrap;
     color: rgb(150, 100, 100);
@@ -54,7 +54,7 @@ li a::before{
     top: 25px;
     border-radius: 1rem;
     transition: 0.3s ease-in-out;
-    background: linear-gradient(to right, rgb(250, 195, 250), rgb(223, 150, 223));
+    background: linear-gradient(to right, rgb(163, 141, 141), rgb(175, 140, 140));
 }
 li a:hover::before{
     width: 100%;
@@ -65,27 +65,28 @@ li a:hover::before{
     border:none;
     font-weight: 500;
     font-size: 1rem;
-    color: rgb(173, 149, 149);
+    color: rgb(150, 100, 100);
     cursor: pointer;
     text-wrap: nowrap;
     transition: 0.3s ease-in-out;
-    background: linear-gradient(to right, rgb(235, 190, 235), rgb(223, 150, 223));
+    background: linear-gradient(to right, rgb(200, 180, 180), rgb(175, 140, 140));
     
 }
 .visit-btn:hover{
-    background: linear-gradient(to right, rgb(223, 150, 223),rgb(250, 195, 250));
+    background: linear-gradient(to right, rgb(175, 140, 140), rgb(200, 180, 180));
     transform: scale(1.03);
 }
+
 #menu-icon{
     font-size: 1.5rem;
-    color: rgb(155, 106, 106);
+    color: rgb(102, 47, 47);
 }
 section{
     min-height: 100vh;
     padding: 8rem 12%;
     width: 100%;
     position: relative;
-    background-color: rgb(230, 180, 230) ;
+    background-color: rgb(200,180,180) ;
 }
 .about{
     display:flex;
@@ -101,6 +102,11 @@ section{
 .about img{
     width: 20vw;
     border-radius: 0%;
+}
+.about a{
+    text-align: center;
+    color: rgb(192, 167, 167);
+    background: linear-gradient(to right, rgb(143, 98, 107), rgb(138, 97, 97));
 }
 .info-box{
     display:flex;
@@ -122,7 +128,7 @@ section{
     color: rgb(155, 106, 106);
 }
 .info-box span{
-    background: linear-gradient(to right, rgb(117, 68, 117), rgb(182, 125, 182));
+    background: linear-gradient(to right, rgb(119, 69, 69), rgb(122, 80, 80));
     font-size: 1.5rem;
     background-clip: text;
     color: transparent
@@ -130,20 +136,22 @@ section{
 .btn-group{
     display: flex;
     gap: 1rem;
-    color: rgb(173, 149, 149);
+    color: rgb(192, 167, 167);
+    justify-content: center;
+    align-items: center;
 }
 .btn{
     border-radius: 3rem;
     padding: 0.5rem 1.5rem;
-    border: 2px solid rgb(150, 100, 100);
+    border: 2px solid rgb(124, 78, 78);
     cursor: pointer;
     font-weight: 500;
     text-wrap: nowrap;
     transition: 0.3s ease-in-out;
-    background: linear-gradient(to right, rgb(235, 190, 235), rgb(223, 150, 223));
+    background: linear-gradient(to right, rgb(143, 98, 107), rgb(138, 97, 97));
 }
 .btn:hover{
-    background: linear-gradient(to right, rgb(223, 150, 223),rgb(250, 195, 250));
+    background: linear-gradient(to right, rgb(87, 57, 63), rgb(105, 71, 71));
     transform: scale(1.03);
 }
 .socials{
@@ -163,7 +171,7 @@ section{
     font-weight: 600;
     text-align: center;
     margin-bottom: 3rem;
-    color: rgb(155, 106, 106);
+    color: rgb(121, 86, 86);
 }
 .experience{
     display: flex;
@@ -191,22 +199,22 @@ section{
     justify-content:center;
     cursor: pointer;
     transition: 0.3s ease-in-out;
-    background: linear-gradient(to right, rgb(235, 190, 235), rgb(223, 150, 223));
+    background: linear-gradient(to right, rgb(206, 166, 175), rgb(189, 160, 160));
 }
 .card:hover{
     transform: scale(1.03);
-    /* background: linear-gradient(to right, rgb(223, 150, 223),rgb(250, 195, 250)); */
-    color:rgb(155, 106, 106)
+    /* background: linear-gradient(to right, rgb(168, 125, 135), rgb(177, 137, 137)); */
+    color:rgb(26, 13, 16)
 }
 .card i{
     font-size: 1.5rem;
-    color: rgb(155, 106, 106);
+    color: rgb(95, 70, 70);
     margin-bottom: 1rem;
 }
 .card span{
     font-size: 1.5rem;
     font-weight: 500;
-    background: linear-gradient(to right, rgb(117, 68, 117), rgb(182, 125, 182));
+    background: linear-gradient(to right, rgb(95, 70, 70), rgb(95, 70, 70));
     background-clip: text;
     color: transparent;
 }
@@ -227,15 +235,21 @@ section{
     border: 2px solid rgb(150, 100, 100);
     cursor: pointer;
     transition: 0.3s ease-in-out;
-    background: linear-gradient(to right, rgb(235, 190, 235), rgb(223, 150, 223));
+    background: linear-gradient(to right, rgb(206, 166, 175), rgb(189, 160, 160));
 }
 .project-card:hover{
     transform: translateY(-10px) scale(1.02);
-    color: rgb(155, 106, 106);
+    color: rgb(22, 16, 16);
+    
 }
 .project-card img{
     width: 20vw;
     border-radius: 1rem;
+}
+.project-card a{
+    text-align: center;
+    color: rgb(192, 167, 167);
+    background: linear-gradient(to right, rgb(143, 98, 107), rgb(138, 97, 97));
 }
 .project-card:hover .btn{
     border: 2px solid rgb(155, 106, 106);
@@ -246,103 +260,199 @@ section{
     color: rgb(80, 36, 80);
 }
 .input-box {
-    display: grid;
-    grid-template-columns: 1fr 1fr; /* Two equal columns */
-    gap: 2rem;
-    align-items: start;
-    width: 100%;
-    max-width: 800px; /* Adjust width */
-    margin: 5rem auto; /* Center horizontally */
-}
-
-/* Left side: Email & Name */
-.input-group {
     display: flex;
     flex-direction: column;
-    gap: 1.5rem;
-    width: 100%;
+    gap: 2rem;
+    align-items: center;
+    justify-content: center;
+    margin-top: 5rem; 
+    text-align: center;
+}
+
+.input-box input{
+    position: relative;
+    border-radius: 3rem;
+    border: 2px solid rgb(150, 100, 100);
+    padding: 2rem 3rem;
+    font-size: 3rem;
+
+}
+.input-box input ::placeholder{
+    color: rgb(150, 100, 100);
+    font-size: 2rem;
+    font-weight: 500;
 }
 
 .input {
     position: relative;
-    width: 100%;
 }
 
 .input i {
     position: absolute;
     top: 50%;
-    left: 15px;
+    left: 10px;
     transform: translateY(-50%);
-    font-size: 1.2rem;
+    font-size: 2rem;
     color: rgb(150, 100, 100);
 }
 
 .input input {
     width: 100%;
     padding: 1rem 2rem;
-    padding-left: 3rem; /* Space for icon */
+    padding-left: 3rem; 
     border-radius: 3rem;
     border: 2px solid rgb(150, 100, 100);
     font-size: 1.2rem;
     font-weight: 500;
     color: rgb(150, 100, 100);
-    background: linear-gradient(to right, rgb(235, 190, 235), rgb(223, 150, 223));
+    background: linear-gradient(to right, rgb(206, 166, 175), rgb(189, 160, 160));
 }
 
-/* Right side: Message Box */
-.input-message-box {
-    width: 100%;
-    height: 100%;
-    position: relative;
-}
-
-.input-message-box textarea {
-    width: 100%;
-    height: 100%;
-    padding: 1rem 2rem;
-    padding-left: 3rem; /* Space for icon */
-    border-radius: 1.5rem; /* Softer corners */
-    border: 2px solid rgb(150, 100, 100);
-    font-size: 1.2rem;
-    font-weight: 500;
-    color: rgb(150, 100, 100);
-    background: linear-gradient(to right, rgb(235, 190, 235), rgb(223, 150, 223));
-    resize: none;
-    outline: none;
-}
-
-.input-message-box i {
-    position: absolute;
-    top: 15px;
-    left: 15px;
-    font-size: 1.2rem;
-    color: rgb(150, 100, 100);
-}
-
-/* Centering the Send Button */
-.message-btn {
-    grid-column: span 2; /* Makes it take full width below */
-    margin-top: 2rem;
-    padding: 1rem 2rem;
-    font-size: 1.2rem;
-    font-weight: 600;
-    color:rgb(155, 106, 106);
-    background: linear-gradient(to right, rgb(155, 107, 155), rgb(223, 150, 223));
-    border: none;
-    border-radius: 3rem;
-    cursor: pointer;
-    transition: 0.3s;
-}
-
-.message-btn:hover {
-    background-color: rgb(120, 80, 80);
-}
 
 footer{
     bottom: 0;
     left:0;
     height: 10rem;
     width: 100%;
+    display:flex;
+    flex-direction: column;
+    gap: 1rem;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(241, 206, 241);
+}
+footer ul{
+    display:flex;
+    gap: 3rem;
+    align-items: center;
+}
+footer ul li a{
+    color: rgb(150, 100, 100);
+    font-weight: 600;
+}
+.copyright{
+    font-size: 1.2rem;
+    color: rgb(150, 100, 100);
+}
+@media(max-width: 1280px){
+    header{
+        padding: 0.5rem 1rem;
+        gap: 2rem;
+    }
+    .about .about-container{
+        gap: 3rem;
+    }
+    .experience-info{
+        flex-direction: column;
+    }
+    .input-box input{
+        padding: 2rem 5rem;
+        font-size: 2.5rem;
+    }
+    .input-box i{
+        font-size: 2.5rem;
+    }
+}
+@media(max-width: 768px){
+    header{
+        padding: 0.5rem 1rem;
+        gap: 2rem;
+    }
+    header.logo{
+        font-size: 1.2rem;
+    }
+    header.visit-btn{
+        display: none;
+    }
+    .about-container{
+        flex-direction: column;
+        gap: 3rem;
+    }
+    .experience-info{
+        flex-direction: column;
+    }
+    .input-box input{
+        padding: 2rem 5rem;
+        font-size: 2.5rem;
+    }
+    .input-box i{
+        font-size: 2.5rem;
+    }
+}
+@media(max-width: 480px){
+    header{
+        padding: 0.5rem 1rem;
+        gap: 2rem;
+    }
+    .logo{
+        font-size: 1.2rem;
+    }
+    .visit-btn{
+        display: none;
+    }
+    .about .about-container{
+        flex-direction: column;
+        gap: 3rem;
+    }
+    .experience-info{
+        flex-direction: column;
+    }
+    .input-box input{
+        padding: 2rem 5rem;
+        font-size: 2.5rem;
+    }
+    .input-box i{
+        font-size: 2.5rem;
+    }
+}
+@media(max-width:600px){
+    header #menu-icon{
+        display: block;
+    }
+    .nav-links{
+        position:absolute;
+        top: 100%;
+        margin-top: 1rem;
+        width: 100%;
+        padding: 1rem;
+        color: rgb(102, 47, 47);
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        background: rgb(200, 180, 180);
+        border-radius: 3rem;
+        display: none;
+    }
+    .nav-links li{
+        margin-top: 1.5rem;
+        padding: 1rem;
+    }
+    .nav-links.active{
+        display: block;
+    }
+    
+    header{
+        padding: 1rem 5rem;
+        gap: 8rem;
+
+    }
+    header .logo{
+        font-size: 1.5rem;
+    }
+    .about-container img{
+        width: 80vw;
+    }
+    .input-box input{
+        padding: 0.5rem 3rem;
+        font-size: 1.5rem;
+        width: 80%;
+    }
+    .input-box input::placeholder{
+        font-size: 1.5rem;
+    }
+    footer{
+        gap: 1rem;
+    }
 }
 
 
@@ -354,10 +464,10 @@ footer{
     width: 10px;
 }
 ::-webkit-scrollbar-track{
-    background: rgb(250, 195, 250);
+    background: rgb(225, 200, 200);
 }
 ::-webkit-scrollbar-thumb{
-    background:linear-gradient(to bottom, rgb(250, 195, 250), rgb(223, 150, 223));
+    background:linear-gradient(to bottom, rgb(200, 180, 180), rgb(175, 140, 140));
     border-radius: 10px;
 }
 ::-webkit-scrollbar-thumb:hover{
