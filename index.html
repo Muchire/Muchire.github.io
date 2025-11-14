@@ -3,171 +3,1023 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio Website</title>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <title>Vivian Muchire - Software Engineer</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Add your favicon here when ready -->
+    <!-- <link rel="icon" type="image/x-icon" href="path-to-your-favicon.ico"> -->
+    <style>
+        /* Define the vibrant accent colors */
+        :root {
+            --primary-accent: #06b6d4;
+            --accent-dark: #0891b2;
+            --accent-light: #22d3ee;
+            --light-border: #e0f2fe;
+            --background-white: #ffffff;
+            --background-gray: #f8fafc;
+            --light-bg: #ecfeff;
+            --border-frame: #06b6d4;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--background-gray);
+            color: #1e293b;
+            overflow-x: hidden;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            border: 3px solid var(--border-frame);
+            pointer-events: none;
+            z-index: 9998;
+        }
+
+        .accent, .section-number, .client-work-client, .tag {
+            color: var(--primary-accent);
+        }
+        .bg-accent {
+            background: linear-gradient(135deg, var(--primary-accent), var(--accent-light));
+        }
+
+        .cursor-dot {
+            background: linear-gradient(135deg, var(--primary-accent), var(--accent-light));
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            position: fixed;
+            pointer-events: none;
+            z-index: 9999;
+            transition: transform 0.15s ease;
+            box-shadow: 0 0 20px var(--primary-accent);
+        }
+
+        /* Solid area above the navigation */
+        .top-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 30px;
+            background: white;
+            z-index: 99;
+        }
+
+        nav {
+            position: fixed;
+            top: 30px;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: white;
+            padding: 1rem 2rem;
+            box-shadow: 0 4px 20px rgba(6, 182, 212, 0.15);
+            border-bottom: 1px solid var(--light-border);
+        }
+        
+        .nav-icons {
+            display: flex;
+            gap: 1.5rem;
+        }
+        
+        .nav-icons a {
+            color: #64748b;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-icons a:hover {
+            color: var(--primary-accent);
+            transform: translateY(-2px);
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+        
+        nav a {
+            color: #64748b;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--primary-accent), var(--accent-light));
+            transition: width 0.3s ease;
+        }
+        nav a:hover {
+            color: var(--primary-accent);
+            transform: translateY(-2px);
+        }
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        /* Profile photo in navigation */
+        .profile-photo {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid var(--primary-accent);
+            margin-right: 1rem;
+        }
+
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 0 4rem;
+            position: relative;
+            background: linear-gradient(135deg, #f0fdfa 0%, #ecfeff 100%);
+            margin-top: 90px; /* Account for fixed navigation */
+        }
+        .hero h1 {
+            font-size: 5.5rem;
+            font-weight: 800;
+            line-height: 1.1;
+            letter-spacing: -3px;
+            margin-bottom: 1rem;
+            color: #0f172a;
+            background: linear-gradient(135deg, #0f172a 0%, #334155 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .hero .subtitle {
+            font-size: 1.8rem;
+            color: #64748b;
+            font-weight: 400;
+            letter-spacing: 2px;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+        }
+        .hero .description {
+            font-size: 1.2rem;
+            color: #64748b;
+            font-weight: 400;
+            line-height: 1.8;
+            max-width: 700px;
+            margin: 1.5rem auto 0;
+        }
+        
+        .scroll-indicator {
+            position: absolute;
+            bottom: 3rem;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 3px;
+            color: var(--primary-accent);
+            transition: opacity 0.3s ease;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
+            40% { transform: translateX(-50%) translateY(-10px); }
+            60% { transform: translateX(-50%) translateY(-5px); }
+        }
+
+        section {
+            min-height: 80vh;
+            padding: 4rem 4rem;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+        .section-number {
+            font-size: 0.85rem;
+            font-weight: 700;
+            letter-spacing: 3px;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+        }
+        .section-title {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 3rem;
+            letter-spacing: -2px;
+            color: #0f172a;
+            position: relative;
+            display: inline-block;
+        }
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-accent), var(--accent-light));
+            border-radius: 2px;
+        }
+
+        /* Projects Grid - Smaller Cards */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+            width: 100%;
+            max-width: 1200px;
+        }
+
+        /* Single Client Work Section */
+        .client-work-single {
+            max-width: 1000px;
+            width: 100%;
+            margin-bottom: 3rem;
+        }
+        
+        .client-work-item {
+            background: white;
+            border: 2px solid transparent;
+            border-radius: 16px;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+        }
+        .client-work-item:hover {
+            border-color: var(--primary-accent);
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(6, 182, 212, 0.2);
+        }
+        .client-work-image {
+            height: 350px;
+            overflow: hidden;
+            background: var(--light-bg);
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .client-work-image img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+            transition: transform 0.5s ease;
+        }
+        .client-work-item:hover .client-work-image img {
+            transform: scale(1.05);
+        }
+        .client-work-content {
+            padding: 2rem;
+            text-align: left;
+        }
+        .client-work-title {
+            font-size: 1.6rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: #0f172a;
+        }
+        .client-work-client {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            color: var(--primary-accent);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .client-work-desc {
+            color: #64748b;
+            line-height: 1.7;
+            margin-bottom: 2rem;
+            font-size: 1rem;
+        }
+        .view-site-btn {
+            display: inline-block;
+            padding: 0.8rem 2rem;
+            background: linear-gradient(135deg, var(--primary-accent), var(--accent-light));
+            color: white;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(6, 182, 212, 0.3);
+            letter-spacing: 0.5px;
+        }
+        .view-site-btn:hover {
+            background: linear-gradient(135deg, var(--accent-dark), var(--primary-accent));
+            transform: translateX(5px);
+            box-shadow: 0 6px 20px rgba(6, 182, 212, 0.4);
+        }
+
+        /* Skills Grid */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+            width: 100%;
+            max-width: 1200px;
+        }
+        
+        .experience-timeline {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+            width: 100%;
+            max-width: 1200px;
+        }
+
+        .project-item {
+            background: white;
+            border: 2px solid transparent;
+            border-radius: 16px;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+            position: relative;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            text-decoration: none;
+            color: inherit;
+        }
+        .project-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, var(--primary-accent), var(--accent-light));
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            z-index: 0;
+        }
+        .project-item:hover {
+            border-color: var(--primary-accent);
+            transform: translateY(-8px);
+            box-shadow: 0 15px 30px rgba(6, 182, 212, 0.2);
+        }
+        .project-item:hover::before {
+            opacity: 0.05;
+        }
+        .project-image {
+            height: 200px;
+            overflow: hidden;
+            background: var(--light-bg);
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+        }
+        .project-image img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+            transition: transform 0.5s ease;
+        }
+        .project-item:hover .project-image img {
+            transform: scale(1.05);
+        }
+        .project-content {
+            padding: 1.5rem;
+            position: relative;
+            z-index: 1;
+            text-align: left;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        .project-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 0.8rem;
+            color: #0f172a;
+        }
+        .project-desc {
+            color: #64748b;
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+            font-size: 0.9rem;
+            flex-grow: 1;
+        }
+        .project-tags {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+        .tag {
+            padding: 0.3rem 0.8rem;
+            background: var(--light-bg);
+            border: 2px solid var(--primary-accent);
+            font-size: 0.75rem;
+            font-weight: 600;
+            border-radius: 20px;
+            transition: all 0.3s ease;
+        }
+        .project-item:hover .tag {
+            background: var(--primary-accent);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .skill-category, .experience-item, .blog-link {
+            background: white;
+            border: 2px solid var(--light-border);
+            border-radius: 16px;
+            padding: 1.5rem;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+            text-align: left;
+        }
+        .skill-category h3 {
+            color: var(--primary-accent);
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            letter-spacing: 0.5px;
+        }
+        .skill-category ul {
+            list-style: none;
+        }
+        .skill-category li {
+            padding: 0.5rem 0;
+            color: #64748b;
+            font-size: 0.9rem;
+            position: relative;
+            padding-left: 1.2rem;
+            transition: all 0.3s ease;
+        }
+        .skill-category li::before {
+            content: '▸';
+            position: absolute;
+            left: 0;
+            color: var(--primary-accent);
+            font-weight: bold;
+        }
+        .skill-category:hover {
+            border-color: var(--primary-accent);
+            transform: translateY(-6px);
+            box-shadow: 0 15px 35px rgba(6, 182, 212, 0.2);
+        }
+        .skill-category:hover li {
+            color: #0f172a;
+            padding-left: 1.5rem;
+        }
+        .experience-item {
+            cursor: default;
+        }
+        .experience-item:hover {
+            border-color: var(--primary-accent);
+            transform: translateY(-6px);
+            box-shadow: 0 15px 35px rgba(6, 182, 212, 0.2);
+        }
+        .experience-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+            gap: 1rem;
+        }
+        .experience-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #0f172a;
+            margin-bottom: 0.4rem;
+        }
+        .experience-company {
+            color: var(--primary-accent);
+            font-size: 0.9rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+        .experience-date {
+            font-size: 0.8rem;
+            color: #94a3b8;
+            white-space: nowrap;
+            font-weight: 500;
+        }
+        .experience-description ul {
+            list-style: none;
+            padding-left: 0;
+        }
+        .experience-description li {
+            position: relative;
+            padding-left: 1.5rem;
+            margin-bottom: 0.6rem;
+            color: #64748b;
+            line-height: 1.6;
+            font-size: 0.9rem;
+        }
+        .experience-description li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--primary-accent);
+            font-weight: bold;
+            font-size: 1rem;
+        }
+        .blog-link {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            text-decoration: none;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .blog-link:hover {
+            border-color: var(--primary-accent);
+            box-shadow: 0 15px 35px rgba(6, 182, 212, 0.2);
+            transform: translateY(-6px);
+        }
+        .blog-icon {
+            font-size: 2.5rem;
+            filter: grayscale(100%);
+            transition: filter 0.3s ease;
+        }
+        .blog-link:hover .blog-icon {
+            filter: grayscale(0%);
+        }
+        .blog-text h3 {
+            color: #0f172a;
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 0.3rem;
+        }
+        .blog-text p {
+            color: #64748b;
+            font-size: 0.9rem;
+        }
+
+        .contact-content {
+            max-width: 800px;
+            width: 100%;
+        }
+        .contact-text {
+            font-size: 1.1rem;
+            color: #64748b;
+            line-height: 1.8;
+            margin-bottom: 2rem;
+        }
+        .contact-links {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+        }
+        .contact-links a {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            padding: 1rem 1.5rem;
+            background: white;
+            border: 2px solid var(--light-border);
+            border-radius: 50px;
+            color: #0f172a;
+            text-decoration: none;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            font-weight: 600;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            text-align: left;
+        }
+        .contact-links a:hover {
+            border-color: var(--primary-accent);
+            transform: translateX(5px);
+            box-shadow: 0 10px 25px rgba(6, 182, 212, 0.2);
+            background: var(--light-bg);
+        }
+        .contact-links a span {
+            color: var(--primary-accent);
+            font-size: 1.2rem;
+            font-weight: bold;
+            transition: transform 0.3s ease;
+        }
+        .contact-links a:hover span {
+            transform: translateX(3px);
+        }
+
+        footer {
+            padding: 2rem 4rem;
+            text-align: center;
+            color: #94a3b8;
+            font-size: 0.9rem;
+            border-top: 2px solid var(--light-border);
+            background: white;
+            font-weight: 500;
+        }
+
+        @media (max-width: 768px) {
+            body::before {
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                border-width: 2px;
+            }
+            .projects-grid, .skills-grid, .experience-timeline {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+            .contact-links {
+                grid-template-columns: 1fr;
+            }
+            .hero {
+                padding: 0 2rem;
+                margin-top: 80px;
+            }
+            .hero h1 {
+                font-size: 3rem;
+            }
+            .hero .subtitle {
+                font-size: 1.2rem;
+            }
+            section {
+                padding: 3rem 2rem;
+                min-height: 70vh;
+            }
+            .section-title {
+                font-size: 2rem;
+                margin-bottom: 2rem;
+            }
+            nav {
+                padding: 0.8rem 1.5rem;
+                gap: 1rem;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            .nav-links {
+                gap: 1rem;
+            }
+            .nav-icons {
+                gap: 1rem;
+            }
+            nav a {
+                font-size: 0.8rem;
+            }
+            footer {
+                padding: 1.5rem 2rem;
+            }
+            .client-work-image {
+                height: 200px;
+            }
+            .profile-photo {
+                width: 35px;
+                height: 35px;
+            }
+        }
+        
+        @media (min-width: 769px) and (max-width: 1200px) {
+            .projects-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .skills-grid, .experience-timeline {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (min-width: 1201px) {
+            .projects-grid {
+                grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+                max-width: 1200px;
+            }
+            .skills-grid {
+                grid-template-columns: repeat(4, 1fr);
+                max-width: 1200px;
+            }
+            .experience-timeline {
+                grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+                max-width: 1200px;
+            }
+        }
+    </style>
 </head>
 <body>
-    <header class="header">
-        <a href="#" class="logo"><span>Vivian Muchire</span></a>
-        <ul class="nav-links">
-            <li> 
-                <a href="#about">About</a>
-            </li>
-            <li> 
-                <a href="#experience">Experience</a>
-            </li>
-            <li> 
-                <a href="#projects">Project</a>
-            </li>
-            <li> 
-                <a href="#contact">Contact</a>
-            </li>
-           
-        </ul>
-        <i class="fa-solid fa-ellipsis-vertical" id="menu-icon"></i>
-        <a href="github.com/Muchire.git " target="_blank" class="visit-btn">GitHub</a>
-        <a href="linkedin.com/in/vivian-muchire" target="_blank" class="visit-btn">LinkedIn</a>
-         
-    </header>
+    <div class="cursor-dot" id="cursor"></div>
 
-    <section id="about" class="about">
-        <div class="about-container">
-            <img src="full.jpeg" alt="">
-            <div class="info-box">
-                <div class="text">
-                    <h2>Hello, I'm</h2>
-                    <h1> Vivian Muchire</h1>
-                    <span> Software Engineer</span>
-                </div>
+    <!-- Solid area above navigation -->
+    <div class="top-bar"></div>
 
-                <div class="btn-group">
-                    <a href="https://docs.google.com/document/d/e/2PACX-1vS1QIlEvFKEBlH4m5kElFUYeYnUI6BgbM4szsZ--67iV-QhSbn_hkAc1zkTD2VwgPCZT_NJhq6Xr1F8/pub" target="_blank" class="btn">Download CV</a>
-
-                </div>
-                <div class="socials">
-                    <a href="https://github.com/Muchire" target="_blank" class="visit-btn">
-                        <i class="fa-brands fa-github-alt"></i>
-                    </a>
-                    
-                    <a href="https://linkedin.com/in/vivian-muchire" target="_blank" class="visit-btn">
-                        <i class="fa-brands fa-linkedin"></i>
-                    </a>
-                    
-
-
-                </div>
-            </div>
+    <nav>
+        <div class="nav-icons">
+            <!-- Add your profile photo here when ready -->
+            <!-- <img src="path-to-your-photo.jpg" alt="Vivian Muchire" class="profile-photo"> -->
+            <a href="https://github.com/Muchire" target="_blank" title="GitHub">
+                <i class="fab fa-github"></i>
+            </a>
+            <a href="https://linkedin.com/in/vivian-muchire" target="_blank" title="LinkedIn">
+                <i class="fab fa-linkedin"></i>
+            </a>
+            <a href="mailto:vivianmuchire@gmail.com" title="Email">
+                <i class="fas fa-envelope"></i>
+            </a>
         </div>
-    </section>
-    <section id="experience" class="experience">
-        <h2 class="section-title"> Experience</h2>
-        <div class="experience-info">
-            <div class="grid">
-                <div class="card">
-                    
-                    <span>Software Developer Intern</span>
-                    <h2>Taquana Limited</h2>
-                    <h2>May 2024 - July 2024</h2>
-                    <p>Developed and implemented new features using TypeScript and Nuxt.js.
-
-                        Designed and prototyped app pages in Figma for an improved UI/UX.
-                        
-                        Integrated MongoDB for efficient data management.
-                        
-                        Worked with design and dev teams to transition designs into code.
-                        
-                        Assisted in code reviews, testing, and deployment.
-                        
-                        Gained experience with Azure DevOps and real-time data pipelines.</p>
-                </div>
-                <div class="card">
-                    
-                    <span>IT volunteer</span>
-                    <h2>University of Easter Africa, Baraton</h2>
-                    <h2>Jan 2024 - May 2024</h2>
-                    <p>Assisted in changing and maintaining Wi-Fi routers,setting up beam lights, improving the network's performance and reliability.
-                        Gained hands-on experience in network troubleshooting and hardware maintenance.
-                        </p>
-                </div>
-
-            </div>
+        <div class="nav-links">
+            <a href="#work">WORK</a>
+            <a href="#client">CLIENT WORK</a>
+            <a href="#experience">EXPERIENCE</a>
+            <a href="#skills">SKILLS</a>
+            <a href="#blog">BLOG</a>
+            <a href="#contact">CONTACT</a>
         </div>
+    </nav>
 
+    <section class="hero">
+        <div>
+            <h1>
+                Vivian<br>
+                <span class="accent">Muchire</span>
+            </h1>
+            <p class="subtitle">Software Engineer</p>
+            <p class="description">
+                Building intuitive web applications with modern frameworks. 
+                Specialized in full-stack development with Python, TypeScript, and Go.
+            </p>
+        </div>
+        <div class="scroll-indicator">SCROLL</div>
     </section>
-    <section id="projects" class="projects">
-        <h2 class="section-title"> Projects</h2>
+
+    <section id="work">
+        <div class="section-number">01 — PERSONAL PROJECTS</div>
+        <h2 class="section-title">Things I've Built</h2>
         <div class="projects-grid">
+            <a href="https://github.com/Muchire/influeconnect" target="_blank" class="project-item">
+                <div class="project-image">
+                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=400&fit=crop" alt="Taskly App Screenshot">
+                </div>
+                <div class="project-content">
+                    <h3 class="project-title">Influe Connect</h3>
+                    <p class="project-desc">An app that helps connect Influencers with Brands and vice versa</p>
+                    <div class="project-tags">
+                        <span class="tag">Django</span>
+                        <span class="tag">Flutter</span>
+                        <span class="tag">Dart</span>
+                    </div>
+                </div>
+            </a>
 
-            <div class="project-card">
-                <img src="project1.png" alt="">
-                <div class="project-info">
-                    <h2>Vee's Comfort</h2>
-                    <p>It's a website built with Django,tailwind css and MySQL  for booking a hostel in Venice.
-                        </p>
-                    <div class="btn-group">
-                        
-                        <a href="https://github.com/Muchire/Vee-s-Comfort.git" target="_blank" class="btn">GitHub</a>
+            <a href="https://github.com/Muchire/psv_frontend" target="_blank" class="project-item">
+                <div class="project-image">
+                    <img src="PSV Finder.png" alt="PSV Sacco App Screenshot">
+                </div>
+                <div class="project-content">
+                    <h3 class="project-title">PSV Sacco App</h3>
+                    <p class="project-desc">Mobile/web platform for passengers to view and rate PSV Saccos with Google OAuth authentication.</p>
+                    <div class="project-tags">
+                        <span class="tag">Flutter</span>
+                        <span class="tag">Django</span>
+                        <span class="tag">OAuth</span>
                     </div>
                 </div>
-            </div>
-            <div class="project-card">
-                <img src="project1.jpg" alt="">
-                <div class="project-info">
-                    <h2>Customer- Order API </h2>
-                    <p> An API built with django (DRF) that sends an sms to customers once an order has been made </p>
-                    <div class="btn-group">
-                        
-                        <a href="https://github.com/Muchire/Customer_Orders_API.git" target="_blank" class="btn">GitHub</a>
+            </a>
+
+            <a href="https://github.com/Muchire/Vee-s-Comfort" target="_blank" class="project-item">
+                <div class="project-image">
+                    <img src="project1.png" alt="Vee's Comfort Screenshot">
+                </div>
+                <div class="project-content">
+                    <h3 class="project-title">Vee's Comfort</h3>
+                    <p class="project-desc">Hostel booking platform with room selection, service add-ons, and integrated payment options.</p>
+                    <div class="project-tags">
+                        <span class="tag">Django</span>
+                        <span class="tag">Tailwind</span>
+                        <span class="tag">MySQL</span>
                     </div>
                 </div>
-            </div>
-            <div class="project-card">
-                <img src="project1.jpg" alt="">
-                <div class="project-info">
-                    <h2>Taskly </h2>
-                    <p>I developed and deployed the Taskly Django REST API, a money management system. it's containerized with Docker and hosted on Google Container Registry (GCR). </p>
-                    <div class="btn-group">
-                        <!-- <div class="btn">View Project</div>  when the project is up and running I will include the link here-->
-                        <a href="https://github.com/Muchire/Taskly.git" target="_blank" class="btn">GitHub</a>
-                    </div>
+            </a>
+        </div>
+    </section>
+
+    <section id="client">
+        <div class="section-number">02 — CLIENT WORK</div>
+        <h2 class="section-title">Website I've Created</h2>
+        <div class="client-work-single">
+            <div class="client-work-item">
+                <div class="client-work-image">
+                    <img src="nestafrica.png" alt="Nest Africa Screenshot">
+                </div>
+                <div class="client-work-content">
+                    <h3 class="client-work-title">Nest Africa</h3>
+                    <p class="client-work-client">Real Estate Company</p>
+                    <p class="client-work-desc">
+                        Real estate platform connecting property seekers with rentals and sales. 
+                        Features property listings, Instagram feed integration, and realtor training registration.
+                        Built with modern web technologies to ensure fast loading times and excellent user experience
+                        across all devices.
+                    </p>
+                    <a href="https://nestafrica.com" target="_blank" class="view-site-btn">View Live Site →</a>
                 </div>
             </div>
         </div>
     </section>
-    <section class="contact" id="contact">
-        <div class="input-box">
-            <h2 class="section-title">Contact Me</h2>
-            <div class="input">
-                <input type="text" placeholder=" vivianmuchire@gmail.com">
-                <i class="fa-solid fa-envelope"></i>
 
+    <section id="experience">
+        <div class="section-number">03 — EXPERIENCE</div>
+        <h2 class="section-title">Where I've Worked</h2>
+        <div class="experience-timeline">
+            <div class="experience-item">
+                <div class="experience-header">
+                    <div>
+                        <h3 class="experience-title">Software Engineering Intern</h3>
+                        <p class="experience-company">ARED Group (Remote)</p>
+                    </div>
+                    <div class="experience-date">Jul 2025 - Oct 2025</div>
+                </div>
+                <div class="experience-description">
+                    <ul>
+                        <li>Developed and integrated a Loyalty Program module using Gin (Go) and Vue.js/React</li>
+                        <li>Optimized Inventory Management to dynamically deduct ingredient stock based on recipes</li>
+                        <li>Built client websites using HTML, CSS, and JavaScript hosted on Hostinger</li>
+                        <li>Integrated POS system support for accurate loyalty and inventory calculations</li>
+                    </ul>
+                </div>
             </div>
-            <div class="input">
-                <input type="text" placeholder=" +245791222152">
-                <i class="fa-solid fa-phone"></i>
 
+            <div class="experience-item">
+                <div class="experience-header">
+                    <div>
+                        <h3 class="experience-title">Software Developer Intern</h3>
+                        <p class="experience-company">Taquana Limited (Nairobi)</p>
+                    </div>
+                    <div class="experience-date">May 2024 - Aug 2024</div>
+                </div>
+                <div class="experience-description">
+                    <ul>
+                        <li>Coded and implemented new features for the Nganya app using TypeScript and Nuxt.js</li>
+                        <li>Designed and prototyped new app pages in Figma</li>
+                        <li>Integrated MongoDB for data management</li>
+                        <li>Gained experience with Azure DevOps for CI/CD pipelines</li>
+                    </ul>
+                </div>
             </div>
 
+            <div class="experience-item">
+                <div class="experience-header">
+                    <div>
+                        <h3 class="experience-title">IT Volunteer</h3>
+                        <p class="experience-company">University of Eastern Africa, Baraton</p>
+                    </div>
+                    <div class="experience-date">Jan 2024 - Apr 2024</div>
+                </div>
+                <div class="experience-description">
+                    <ul>
+                        <li>Assisted in maintaining Wi-Fi routers and setting up equipment</li>
+                        <li>Provided technical support for network issues</li>
+                        <li>Ensured seamless connectivity for students and staff</li>
+                    </ul>
+                </div>
+            </div>
         </div>
     </section>
+
+    <section id="skills">
+        <div class="section-number">04 — TECHNICAL SKILLS</div>
+        <h2 class="section-title">My Expertise</h2>
+        <div class="skills-grid">
+            <div class="skill-category">
+                <h3>Programming Languages</h3>
+                <ul>
+                    <li>TypeScript</li>
+                    <li>Python</li>
+                    <li>Go (Golang)</li>
+                    <li>JavaScript</li>
+                </ul>
+            </div>
+            <div class="skill-category">
+                <h3>Frameworks & Libraries</h3>
+                <ul>
+                    <li>Django</li>
+                    <li>Vue.js</li>
+                    <li>Nuxt.js</li>
+                    <li>Flutter</li>
+                    <li>Gin (Go)</li>
+                </ul>
+            </div>
+            <div class="skill-category">
+                <h3>Databases & APIs</h3>
+                <ul>
+                    <li>MongoDB</li>
+                    <li>MySQL</li>
+                    <li>RESTful APIs</li>
+                    <li>API Integration</li>
+                    <li>POS API Integration</li>
+                </ul>
+            </div>
+            <div class="skill-category">
+                <h3>DevOps & Tools</h3>
+                <ul>
+                    <li>Docker</li>
+                    <li>Google Cloud (GCR, GCE)</li>
+                    <li>Azure DevOps</li>
+                    <li>Figma</li>
+                    <li>Git & GitHub</li>
+                    <li>Linux</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section id="blog">
+        <div class="section-number">05 — WRITING</div>
+        <h2 class="section-title">My Blog</h2>
+        <a href="https://hashnode.com/@VivianMuchire" target="_blank" class="blog-link">
+            <div class="blog-icon">✍️</div>
+            <div class="blog-text">
+                <h3>Read My Articles</h3>
+                <p>Thoughts on software development, tutorials, and tech insights</p>
+            </div>
+        </a>
+    </section>
+
+    <section id="contact">
+        <div class="section-number">06 — GET IN TOUCH</div>
+        <h2 class="section-title">Let's Connect</h2>
+        <div class="contact-content">
+            <p class="contact-text">
+                I'm currently open to new opportunities and interesting projects. 
+                Whether you want to discuss a project or just say hi, feel free to reach out!
+            </p>
+            <div class="contact-links">
+                <a href="mailto:vivianmuchire@gmail.com">
+                    <span>→</span> vivianmuchire@gmail.com
+                </a>
+                <a href="tel:0791222152">
+                    <span>→</span> 0791 222 152
+                </a>
+                <a href="https://github.com/Muchire" target="_blank">
+                    <span>→</span> GitHub
+                </a>
+                <a href="https://linkedin.com/in/vivian-muchire" target="_blank">
+                    <span>→</span> LinkedIn
+                </a>
+            </div>
+        </div>
+    </section>
+
     <footer>
-        <ul>
-            <li> 
-                <a href="#about">About</a>
-            </li>
-            <li> 
-                <a href="#experience">Experience</a>
-            </li>
-            <li> 
-                <a href="#projects">Project</a>
-            </li>
-            <li> 
-                <a href="#contact">Contact</a>
-            </li>
-        </ul>
-        <p class="copyright"> All Rights Reserved | Vivian Muchire</p>
+        <p>© 2025 Vivian Muchire — Designed & Built with care</p>
     </footer>
-    <script src="script.js"></script>
+
+    <script>
+        // Custom cursor
+        const cursor = document.getElementById('cursor');
+        document.addEventListener('mousemove', (e) => {
+            cursor.style.left = e.clientX + 'px';
+            cursor.style.top = e.clientY + 'px';
+        });
+
+        // Hide scroll indicator on scroll
+        const scrollIndicator = document.querySelector('.scroll-indicator');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 100) {
+                scrollIndicator.style.opacity = '0';
+            } else {
+                scrollIndicator.style.opacity = '1';
+            }
+        });
+
+        // Smooth scroll for navigation
+        document.querySelectorAll('nav a, a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                const href = this.getAttribute('href');
+                if (href.startsWith('#')) {
+                    e.preventDefault();
+                    const target = document.querySelector(href);
+                    if (target) {
+                        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }
+                }
+            });
+        });
+    </script>
 </body>
 </html>
